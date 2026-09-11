@@ -23,6 +23,7 @@
 }
 *{box-sizing:border-box}
 html{background:var(--bg);scroll-behavior:smooth}
+html,body{max-width:100%;overflow-x:hidden}
 body{
   margin:0;
   min-width:320px;
@@ -60,7 +61,7 @@ a{color:inherit;text-decoration:none}
   width:510px;height:510px;border-radius:50%;opacity:.34;
   background:repeating-radial-gradient(circle at center,transparent 0 35px,rgba(197,169,117,.16) 36px 37px,transparent 38px 70px);
 }
-.shell{width:min(1078px,calc(100% - 60px));margin:0 auto;position:relative;z-index:2}
+.shell{width:min(1078px,calc(100% - 60px));max-width:100%;margin:0 auto;position:relative;z-index:2}
 header{
   height:112px;display:flex;align-items:flex-start;justify-content:space-between;padding-top:29px;
 }
@@ -208,6 +209,15 @@ footer{text-align:center;padding:24px 0 31px;color:#5c5650;font-size:14px;line-h
 .safety{display:flex;gap:8px;align-items:flex-start;margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:10px;line-height:1.55;color:#6d665e}
 .safety-mark{flex:0 0 19px;width:19px;height:19px;border-radius:50%;border:1px solid #dfc992;color:#a67318;display:flex;align-items:center;justify-content:center;font-size:11px}
 .presale-footer{padding:27px 0 36px;font-size:10px;color:#777067;border-top:1px solid rgba(232,225,216,.8);margin-top:4px}
+
+.reserved-banner{display:flex;align-items:center;gap:13px;margin:0 auto 24px;padding:14px 17px;max-width:650px;border:1px solid #b9dec4;border-radius:16px;background:#f3fbf5;color:#235b34;text-align:left}
+.reserved-check{flex:0 0 30px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#2e9b50;color:#fff;font-size:18px;font-weight:800}
+.reserved-banner b{display:block;font-size:12px;letter-spacing:.05em;margin-bottom:3px}.reserved-banner span{display:block;font-size:11px;line-height:1.45;color:#52705b}
+.request-state{margin:12px 2px 0;font-size:10px;line-height:1.5;text-align:center;color:#5c665f}
+.presale-action.request{background:linear-gradient(#3dab62,#248647);box-shadow:0 3px 10px rgba(36,134,71,.16)}
+.presale-action.request:disabled{opacity:.65;cursor:wait}
+@media(max-width:900px){header{min-width:0}nav{min-width:0;gap:14px}.brand{min-width:0}.presale-grid,.presale-panel,.presale-info,.buy-panel{min-width:0;max-width:100%}}
+@media(max-width:640px){header{height:auto;min-height:78px;align-items:center;padding:14px 0}.brand-word{font-size:20px}.brand-mark{width:38px;height:38px}nav{gap:8px}.wallet{padding:9px 11px;font-size:9px;white-space:nowrap}.presale-title{letter-spacing:.08em}.presale-sub{padding:0 4px}.wallet-support-title{align-items:flex-start;flex-direction:column}.clarity-row{align-items:flex-start;flex-direction:column;gap:4px}.reserved-banner{margin-left:0;margin-right:0}}
 @media(max-width:900px){.presale-grid{grid-template-columns:1fr}.buy-panel{position:static}.presale-main{padding-top:15px}.presale-hero{padding-top:10px}.presale-title{font-size:56px}.presale-metrics,.presale-steps{grid-template-columns:1fr}.presale-info{padding:28px 24px}.buy-panel{padding:24px}.presale-sub{padding:0 10px}}
 @media(max-width:640px){.presale-title{font-size:46px}.presale-tagline{font-size:19px}.presale-sub{font-size:14px}.presale-main{padding-bottom:55px}.presale-grid{gap:15px}.presale-info{padding:24px 18px}.buy-panel{padding:20px 18px}.panel-title{font-size:32px}.presale-footer{text-align:center}}
 </style>
@@ -234,73 +244,93 @@ footer{text-align:center;padding:24px 0 31px;color:#5c5650;font-size:14px;line-h
         <div class="presale-kicker"><i></i>SERON PRESALE</div>
         <h1 class="presale-title">SERON</h1>
         <p class="presale-tagline">Abundance is born from Light.</p>
-        <p class="presale-sub">Acquire SERON directly with USDT on TON. Connect your wallet, choose your amount, approve the payment, and receive SERON to the same wallet after on-chain verification.</p>
+        <p class="presale-sub">Round 1 is fully reserved. You may connect a TON wallet to submit a private availability request for future allocation.</p>
+              <div class="reserved-banner" role="status"><span class="reserved-check">✓</span><div><b>PRESALE ROUND 1 — FULLY RESERVED</b><span>The initial allocation is fully reserved. Wallet requests are accepted for possible future availability.</span></div></div>
       </section>
 
       <section class="presale-grid" aria-label="SERON presale">
         <article class="presale-panel presale-info">
           <p class="panel-eyebrow">PRESALE</p>
-          <h2 class="panel-title">Simple by design.</h2>
-          <p class="panel-copy">No account, profile, email or personal form. The purchase flow uses your TON wallet address and verified blockchain transactions only.</p>
+          <h2 class="panel-title">Round 1 is fully reserved.</h2>
+          <p class="panel-copy">No payment is collected on this page. Connecting a wallet only submits its TON address as a private request for possible future availability.</p>
 
           <div class="presale-metrics">
-            <div class="presale-metric"><span>PAYMENT</span><strong>USDT on TON</strong></div>
-            <div class="presale-metric"><span>DELIVERY</span><strong>SERON</strong></div>
+            <div class="presale-metric"><span>ROUND 1</span><strong>FULLY RESERVED</strong></div>
+            <div class="presale-metric"><span>REQUEST</span><strong>Wallet address only</strong></div>
             <div class="presale-metric"><span>NETWORK</span><strong>TON Mainnet</strong></div>
           </div>
 
           <div class="presale-rule"></div>
           <div class="presale-steps">
-            <div class="presale-step"><div class="step-num">1</div><b>Connect wallet</b><p>Connect a TON wallet. Your private key never leaves your wallet.</p></div>
-            <div class="presale-step"><div class="step-num">2</div><b>Pay USDT</b><p>Choose the SERON amount and approve the quoted USDT payment in your wallet.</p></div>
-            <div class="presale-step"><div class="step-num">3</div><b>Receive SERON</b><p>After on-chain verification, SERON is delivered to the connected wallet.</p></div>
+            <div class="presale-step"><div class="step-num">1</div><b>Connect wallet</b><p>Connect a TON wallet through the standard TON Connect selector.</p></div>
+            <div class="presale-step"><div class="step-num">2</div><b>Submit request</b><p>Your public TON wallet address is recorded privately. No payment is requested.</p></div>
+            <div class="presale-step"><div class="step-num">3</div><b>Manual review</b><p>A request is not a purchase or guaranteed allocation. Future availability is handled separately.</p></div>
           </div>
         </article>
 
         <aside class="presale-panel buy-panel" id="buy">
-          <div class="buy-head"><h2>Presale</h2><span class="ready">INTEGRATION READY</span></div>
-          <label class="buy-label" for="amount">SERON amount <small>1 SERON = 0.0999 USDT</small></label>
-          <div class="amount-row"><input id="amount" type="text" inputmode="decimal" value="100" autocomplete="off" aria-label="SERON amount"><span>SERON</span></div>
-          <div class="quote">
-            <div class="quote-row"><span>You receive</span><strong id="receive">100 SERON</strong></div>
-            <div class="quote-row"><span>You pay</span><strong id="total">9.99 USDT</strong></div>
-            <div class="quote-row"><span>Network</span><strong>TON Mainnet</strong></div>
-          </div>
-          <div class="payment-clarity" aria-label="Payment details">
-            <div class="clarity-row"><span>Accepted payment</span><strong>USDT on TON only</strong></div>
-            <div class="clarity-row"><span>Delivery</span><strong>SERON to your connected wallet</strong></div>
+          <div class="buy-head"><h2>Wallet Request</h2><span class="ready">ROUND 1 FULL</span></div>
+          <div class="payment-clarity" aria-label="Request details">
+            <div class="clarity-row"><span>Status</span><strong>Fully Reserved</strong></div>
+            <div class="clarity-row"><span>Request type</span><strong>TON wallet address only</strong></div>
+            <div class="clarity-row"><span>Payment</span><strong>None on this page</strong></div>
           </div>
           <div class="wallet-support">
             <div class="wallet-support-title"><span>Wallet support</span><span class="wallet-pill">TONKEEPER · RECOMMENDED</span></div>
-            <p>Tonkeeper has been validated with the SERON presale flow. Other TON Connect-compatible wallets can connect through the standard TON Connect wallet selector.</p>
+            <p>Tonkeeper is recommended. Other TON Connect-compatible wallets can connect through the standard TON Connect wallet selector.</p>
           </div>
-          <button class="presale-action" type="button" id="connectBtn">Connect Wallet</button>
-          <button class="presale-action secondary" type="button" disabled>Continue to Payment</button>
-          <p class="presale-note">Payment asset: USDT on TON Mainnet. Wallet connection and payment remain disabled in this static preview until the validated presale backend is attached.</p>
-          <p class="network-warning">Do not send USDT from TRON, Ethereum, BNB Chain or any other network.</p>
-          <div class="safety"><span class="safety-mark">✓</span><span>Never enter a seed phrase or private key on this page. Wallet approval happens inside your wallet application.</span></div>
+          <button class="presale-action request" type="button" id="connectBtn">CONNECT WALLET</button>
+          <p class="request-state" id="requestState">Connect a wallet to submit a private request.</p>
+          <p class="presale-note">Connecting does not reserve SERON, create a purchase, or authorize a payment. Only your public TON wallet address is submitted.</p>
+          <div class="safety"><span class="safety-mark">✓</span><span>Never enter a seed phrase or private key on this page. Wallet approval happens only inside your wallet application.</span></div>
         </aside>
       </section>
     </main>
     <footer class="presale-footer">© 2025 SERON. All rights reserved.</footer>
   </div>
 </div>
+<script src="https://unpkg.com/@tonconnect/ui@3.0.2/dist/tonconnect-ui.min.js"></script>
 <script>
 (()=>{
-  const amount=document.getElementById('amount');
-  const total=document.getElementById('total');
-  const receive=document.getElementById('receive');
-  const rate=0.0999;
-  function render(){
-    const raw=(amount.value||'').replace(',','.').replace(/[^0-9.]/g,'');
-    const n=Number(raw);
-    if(!Number.isFinite(n)||n<0){total.textContent='—';receive.textContent='—';return;}
-    receive.textContent=(Number.isInteger(n)?String(n):n.toLocaleString(undefined,{maximumFractionDigits:9}))+' SERON';
-    total.textContent=(n*rate).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:6})+' USDT';
+  const btn=document.getElementById('connectBtn');
+  const state=document.getElementById('requestState');
+  let submittedAddress='';
+  const setState=(text)=>{state.textContent=text;};
+  if(!window.TON_CONNECT_UI){
+    btn.disabled=true;setState('Wallet connection is temporarily unavailable.');return;
   }
-  amount.addEventListener('input',render);render();
-  document.getElementById('connectBtn').addEventListener('click',()=>{
-    document.querySelector('.presale-note').textContent='Wallet connection will activate when the validated presale backend is attached.';
+  const tonConnectUI=new TON_CONNECT_UI.TonConnectUI({manifestUrl:location.origin+'/tonconnect-manifest.json',analytics:{mode:'off'}});
+  async function submit(address){
+    if(!address||address===submittedAddress)return;
+    btn.disabled=true;setState('Submitting request…');
+    try{
+      const res=await fetch('/api/presale-request',{method:'POST',headers:{'content-type':'application/json','accept':'application/json'},body:JSON.stringify({address})});
+      const data=await res.json().catch(()=>({}));
+      if(!res.ok||data.status!=='ok')throw new Error('request failed');
+      submittedAddress=address;
+      btn.textContent='REQUEST RECEIVED ✓';
+      setState('Your wallet request was received privately.');
+    }catch(e){
+      btn.disabled=false;
+      btn.textContent='CONNECT WALLET';
+      setState('Wallet connected, but the private request service is not active yet.');
+    }
+  }
+  tonConnectUI.onStatusChange(wallet=>{
+    if(wallet&&wallet.account&&wallet.account.address){
+      btn.textContent='CONNECTED';
+      submit(wallet.account.address);
+    }else{
+      submittedAddress='';btn.disabled=false;btn.textContent='CONNECT WALLET';setState('Connect a wallet to submit a private request.');
+    }
+  });
+  btn.addEventListener('click',async()=>{
+    if(tonConnectUI.connected){
+      const address=tonConnectUI.account?.address;
+      if(address)await submit(address);
+      return;
+    }
+    try{await tonConnectUI.openModal();}catch(e){setState('Wallet connection was not completed.');}
   });
 })();
 </script>
