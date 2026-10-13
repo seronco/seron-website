@@ -197,6 +197,12 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
+    if (url.pathname === "/win/docs" || url.pathname === "/win/docs/") {
+      const u = new URL(request.url);
+      u.pathname = "/win/docs/index.html";
+      return env.ASSETS.fetch(new Request(u, request));
+    }
+
     if (url.pathname === "/docs" || url.pathname === "/docs/") {
       const u = new URL(request.url);
       u.pathname = "/docs/index.html";
