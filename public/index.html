@@ -225,6 +225,28 @@ footer{text-align:center;padding:24px 0 31px;color:#5c5650;font-size:14px;line-h
   .open-layer:first-child{border-right:0;padding-bottom:14px;border-bottom:1px solid var(--line)}
 }
 
+
+/* v16.5: SERON introduction film, self-hosted and isolated */
+.seron-film{margin-top:18px;padding:29px 32px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);box-shadow:0 8px 26px rgba(60,43,18,.03)}
+.seron-film-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:32px;align-items:center}
+.seron-film-copy{min-width:0}
+.seron-film-eyebrow{font-size:10px;font-weight:700;letter-spacing:.19em;color:#a77b39}
+.seron-film-copy h2{font-family:Georgia,serif;font-size:clamp(26px,3vw,38px);font-weight:400;line-height:1.16;letter-spacing:-.02em;color:#26211b;margin:11px 0 13px}
+.seron-film-copy p{font-size:13px;line-height:1.85;color:#625d56;margin:0 0 14px;max-width:390px}
+.seron-film-lang{font-size:10px;color:#8a7860;letter-spacing:.09em;font-weight:600}
+.seron-film-media{min-width:0}
+.seron-film-player{position:relative;overflow:hidden;aspect-ratio:16/9;border-radius:13px;border:1px solid rgba(193,151,82,.48);background:#11100e;box-shadow:0 13px 30px rgba(54,38,15,.13)}
+.seron-film-player video{width:100%;height:100%;display:block;object-fit:contain;background:#11100e}
+.seron-film-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border:0;background:transparent;cursor:pointer;color:#fff}
+.seron-film-play::before{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.2),transparent 50%)}
+.seron-film-play-icon{position:relative;display:grid;place-items:center;width:64px;height:64px;border-radius:50%;border:1px solid rgba(255,255,255,.7);background:rgba(176,125,45,.94);box-shadow:0 4px 24px rgba(0,0,0,.28);transition:transform .2s ease}
+.seron-film-play:hover .seron-film-play-icon,.seron-film-play:focus-visible .seron-film-play-icon{transform:scale(1.08)}
+.seron-film-play:focus-visible{outline:3px solid #c48a22;outline-offset:-5px}
+.seron-film-play-icon svg{width:25px;height:25px;margin-left:4px}
+.seron-film-note{margin-top:9px;font-size:11px;line-height:1.5;color:#877a6a;text-align:right}
+@media(max-width:760px){.seron-film{padding:23px 18px}.seron-film-grid{grid-template-columns:1fr;gap:18px}.seron-film-copy h2{font-size:clamp(25px,6vw,32px)}.seron-film-copy p{max-width:none}.seron-film-note{text-align:left}}
+@media(prefers-reduced-motion:reduce){.seron-film-play-icon{transition:none}}
+
 </style>
 <style>
 .stat:nth-child(3) .stat-icon{
@@ -346,6 +368,32 @@ footer{text-align:center;padding:24px 0 31px;color:#5c5650;font-size:14px;line-h
 <div class="domain-text"><div><span class="domain-title">seron.win</span><span class="coming">COMING SOON</span></div><div class="domain-sub">Planned competitions · Coming Soon</div></div>
 </a>
 </section>
+
+<section class="seron-film" aria-labelledby="seron-film-title">
+  <div class="seron-film-grid">
+    <div class="seron-film-copy">
+      <div class="seron-film-eyebrow">DISCOVER SERON</div>
+      <h2 id="seron-film-title">Two Projects.<br>One Vision.</h2>
+      <p>Meet SERON and the planned SERON.win ecosystem in our official introduction film. Explore the fixed genesis supply, 69-year release schedule, and the vision behind both projects.</p>
+      <div class="seron-film-lang">OFFICIAL INTRODUCTION FILM · ENGLISH VERSION · 2:14</div>
+    </div>
+    <div class="seron-film-media">
+      <div class="seron-film-player">
+        <video id="seron-intro-video" controls playsinline preload="none" poster="/videos/seron-film-poster.webp" aria-label="SERON official introduction film, English version">
+          <source src="/videos/SERON-film_1080p_EN.webm" type="video/webm">
+          <source src="/videos/SERON-film_1080p_EN.mp4" type="video/mp4">
+          <track kind="subtitles" src="/videos/SERON-film_EN.vtt" srclang="en" label="English" default>
+          Your browser does not support HTML5 video. <a href="/videos/SERON-film_1080p_EN.mp4">Download the SERON film</a>.
+        </video>
+        <button class="seron-film-play" id="seron-intro-play" type="button" aria-label="Play SERON introduction film">
+          <span class="seron-film-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg></span>
+        </button>
+      </div>
+      <div class="seron-film-note">SERON.win is planned and not yet available for public paid participation.</div>
+    </div>
+  </div>
+</section>
+
 <section aria-labelledby="open-by-design-title" class="open-by-design">
 <div class="open-eyebrow">OPEN BY DESIGN</div>
 <h2 class="open-title" id="open-by-design-title">Your assets. Your wallet. Your choice.</h2>
@@ -440,5 +488,23 @@ footer{text-align:center;padding:24px 0 31px;color:#5c5650;font-size:14px;line-h
   load();
 })();
 </script>
+
+<script>
+/* v16.5: only controls the introductory film, independent of wallet and API scripts */
+(() => {
+  const video = document.getElementById('seron-intro-video');
+  const play = document.getElementById('seron-intro-play');
+  if (!video || !play) return;
+  const hideOverlay = () => { play.hidden = true; play.style.display = 'none'; };
+  play.addEventListener('click', () => {
+    hideOverlay();
+    const pending = video.play();
+    if (pending && typeof pending.catch === 'function') pending.catch(() => { video.controls = true; });
+  });
+  video.addEventListener('play', hideOverlay);
+  video.addEventListener('error', () => { hideOverlay(); video.controls = true; });
+})();
+</script>
+
 </body>
 </html>
